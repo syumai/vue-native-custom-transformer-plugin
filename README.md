@@ -10,6 +10,11 @@
 * Open `vueTransformerPlugin.js` and replace `'vue-native-scripts'` to `'vue-native-custom-transformer-plugin'`.
 * Add custom language packages you want to use. (ex. `yarn add pug`)
 
+### Example app
+
+* [vue-native-example-app](https://github.com/syumai/vue-native-example-app)
+  - Example app with Pug
+
 ## Warning
 
 * This is an experimental product.
@@ -27,7 +32,7 @@
 
 ### styles
 
-* Sass (defined in code but not implemented)
+* Sass (defined in code but not working)
 
 ## License
 
