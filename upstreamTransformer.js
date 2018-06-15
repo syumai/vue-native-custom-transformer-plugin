@@ -3,7 +3,7 @@ const semver = require('semver');
 const {
   version: reactNativeVersionString,
 } = require('react-native/package.json');
-var { minor: reactNativeMinorVersion } = semver(reactNativeVersionString);
+const { minor: reactNativeMinorVersion } = semver(reactNativeVersionString);
 
 const upstreamTransformer = (() => {
   if (reactNativeMinorVersion >= 52) {
