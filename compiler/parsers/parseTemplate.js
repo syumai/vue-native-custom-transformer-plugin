@@ -16,7 +16,7 @@ function transformTemplateContent(content, lang) {
   if (!transform) {
     return content;
   }
-  transform(content);
+  return transform(content);
 }
 
 function parseTemplate(template) {

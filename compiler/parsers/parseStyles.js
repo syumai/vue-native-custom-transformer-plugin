@@ -12,7 +12,7 @@ function transformStylesContent(content, lang) {
   if (!transform) {
     return content;
   }
-  transform(content);
+  return transform(content);
 }
 
 function parseStyles(styles) {

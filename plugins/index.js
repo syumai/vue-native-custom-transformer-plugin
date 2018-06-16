@@ -6,7 +6,7 @@ const registeredPlugins = {
 };
 
 function registerPlugin(moduleName, plugin) {
-  const { lang, transform } = plugin;
+  const { lang, transform, options } = plugin;
   if (!lang) {
     console.error(`plugin lang is required. plugin was not registered.`);
     return;
@@ -17,10 +17,11 @@ function registerPlugin(moduleName, plugin) {
     );
     return;
   }
-  registeredPlugins[lang] = transform;
+  registeredPlugins[lang] = content => transform(content, options);
 }
 
-function registerBuitinPlugin(moduleName, lang) {
+function registerBuitinPlugin(moduleName, plugin) {
+  const { lang, options } = plugin;
   let pluginPath;
   try {
     pluginPath = require.resolve(`../plugins/${moduleName}/${lang}.js`);
@@ -32,14 +33,19 @@ function registerBuitinPlugin(moduleName, lang) {
     throw e;
   }
   const transform = require(pluginPath);
-  const plugin = {
+  const foundPlugin = {
     lang,
     transform,
+    options,
   };
-  registerPlugin(moduleName, plugin);
+  registerPlugin(moduleName, foundPlugin);
 }
 
 function initializePlugins(plugins) {
+  if (registeredPlugins.initialized) {
+    console.error('plugins are already initialized.');
+    return;
+  }
   registeredPlugins.initialized = true;
 
   if (!Array.isArray(plugins)) {
@@ -53,10 +59,19 @@ function initializePlugins(plugins) {
 
     for (const plugin of modulePlugins) {
       if (typeof plugin === 'string') {
-        registerBuitinPlugin(moduleName, plugin);
+        registerBuitinPlugin(moduleName, {
+          lang: plugin,
+        });
+        continue;
+      } else if (typeof plugin !== 'object') {
+        console.error('plugin type is not valid.');
         continue;
       }
-      registerPlugin(moduleName, plugin);
+      if (plugin.transform) {
+        registerPlugin(moduleName, plugin);
+        continue;
+      }
+      registerBuitinPlugin(moduleName, plugin);
     }
   }
 }

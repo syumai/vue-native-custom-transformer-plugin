@@ -10,7 +10,7 @@ function transformScriptContent(content, lang) {
   if (!transform) {
     return content;
   }
-  transform(content);
+  return transform(content);
 }
 
 function parseScript(script) {
