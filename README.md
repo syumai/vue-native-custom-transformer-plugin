@@ -9,7 +9,8 @@
 * `yarn add vue-native-custom-transformer-plugin`
 * Open `vueTransformerPlugin.js` and replace `'vue-native-scripts'` to `'vue-native-custom-transformer-plugin'`.
 * Add custom language packages you want to use. (ex. `yarn add pug typescript stylus`)
-* Add config file to your project root.
+* Add config file named `vue-native-custom-transformer.config.js` to your project root.
+  - Example: https://github.com/syumai/vue-native-custom-transformer-plugin/tree/master/examples
 
 ### Example app
 
