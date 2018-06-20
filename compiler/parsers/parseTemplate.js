@@ -1,28 +1,22 @@
 const compiler = require('vue-native-template-compiler');
 const constants = require('vue-native-scripts/src/util/constants');
-
-let pug;
-
-try {
-  pug = require('pug');
-} catch (e) {
-  console.log('pug not loaded');
-}
+const { registeredPlugins } = require('../../plugins');
 
 const defaultTemplate = {
   import: `import { Component as ${constants.COMPONENT} } from 'react'`,
   render: `const ${constants.TEMPLATE_RENDER} = () => null`,
 };
 
-function transpileTemplateContent(content, lang) {
-  if (lang === 'pug') {
-    if (pug) {
-      return pug.render(content);
-    } else {
-      throw new Error(`failed to load pug! please add pug as a dependency.`);
-    }
+function transformTemplateContent(content, lang) {
+  if (!lang) {
+    return content;
   }
-  return content;
+
+  const transform = registeredPlugins.template[lang];
+  if (!transform) {
+    return content;
+  }
+  return transform(content);
 }
 
 function parseTemplate(template) {
@@ -32,9 +26,9 @@ function parseTemplate(template) {
 
   const { content, lang } = template;
   const trimmedContent = content.replace(/\/\/\n/g, '');
-  const transpiledContent = transpileTemplateContent(trimmedContent, lang);
-  if (transpiledContent) {
-    const obj = compiler.nativeCompiler(transpiledContent);
+  const transformedContent = transformTemplateContent(trimmedContent, lang);
+  if (transformedContent) {
+    const obj = compiler.nativeCompiler(transformedContent);
     return {
       import: obj.importCode,
       render: `const ${constants.TEMPLATE_RENDER} = ${obj.renderCode}`,
