@@ -1,7 +1,7 @@
 module.exports = {
   // configure transformer plugins
   plugins: {
-    template: ['pug'], // builtin plugins can be enabled by name
+    template: ['pug'], // builtin plugins can be enabled by name string
     script: [
       {
         lang: 'ts',

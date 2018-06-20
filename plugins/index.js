@@ -1,3 +1,6 @@
+const path = require('path');
+const appRootPath = path.dirname(require.main.filename);
+
 const registeredPlugins = {
   initialized: false,
   template: {},
@@ -11,7 +14,7 @@ function registerPlugin(moduleName, plugin) {
     console.error(`plugin lang is required. plugin was not registered.`);
     return;
   }
-  if (typeof transform !== 'function') {
+  if (transform && typeof transform !== 'function') {
     console.error(
       `plugin transform must be function. plugin was not registered.`
     );
@@ -41,13 +44,7 @@ function registerBuitinPlugin(moduleName, plugin) {
   registerPlugin(moduleName, foundPlugin);
 }
 
-function initializePlugins(plugins) {
-  if (registeredPlugins.initialized) {
-    console.error('plugins are already initialized.');
-    return;
-  }
-  registeredPlugins.initialized = true;
-
+function registerPlugins(plugins) {
   if (!Array.isArray(plugins)) {
     plugins = [plugins];
   }
@@ -58,12 +55,12 @@ function initializePlugins(plugins) {
     }
 
     for (const plugin of modulePlugins) {
-      if (typeof plugin === 'string') {
+      if (plugin && typeof plugin === 'string') {
         registerBuitinPlugin(moduleName, {
           lang: plugin,
         });
         continue;
-      } else if (typeof plugin !== 'object') {
+      } else if (plugin && typeof plugin !== 'object') {
         console.error('plugin type is not valid.');
         continue;
       }
@@ -74,6 +71,39 @@ function initializePlugins(plugins) {
       registerBuitinPlugin(moduleName, plugin);
     }
   }
+}
+
+function loadConfig() {
+  // load config automatically
+  let configPath;
+  try {
+    configPath = require.resolve(
+      `${appRootPath}/vue-native-custom-transformer.config.js`
+    );
+  } catch (e) {
+    if (e.code === 'MODULE_NOT_FOUND') {
+      console.error(
+        `config file for vue-native-custom-transformer was not found`
+      );
+      return;
+    }
+  }
+  return require(configPath);
+}
+
+function initializePlugins() {
+  if (registeredPlugins.initialized) {
+    console.error('plugins are already initialized.');
+    return;
+  }
+  registeredPlugins.initialized = true;
+
+  const { plugins } = loadConfig();
+  if (!plugins) {
+    console.error('config for vue-native-custom-transformer was not found');
+    return;
+  }
+  registerPlugins(config.plugins);
 }
 
 module.exports = {

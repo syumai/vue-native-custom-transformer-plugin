@@ -1,5 +1,8 @@
 const upstreamTransformer = require('./upstreamTransformer');
 const { compile } = require('./compiler');
+const { initializePlugins } = require('./plugins');
+
+initializePlugins();
 
 // handle RN version >= 0.46
 const isOldRN = ({ src }) => src && typeof src === 'object';

@@ -1,4 +1,4 @@
-const scssTransform = require('./scss.js');
+const scssTransform = require('./scss');
 
 function transform(content, options) {
   options = Object.assign(

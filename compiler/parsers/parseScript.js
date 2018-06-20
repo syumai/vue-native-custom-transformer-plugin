@@ -1,5 +1,5 @@
-const defaultScript = `const ${constants.SCRIPT_OPTIONS} = {}`;
 const constants = require('vue-native-scripts/src/util/constants');
+const defaultScript = `const ${constants.SCRIPT_OPTIONS} = {}`;
 
 function transformScriptContent(content, lang) {
   if (!lang) {
