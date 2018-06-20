@@ -2,7 +2,7 @@
 
 ## What is this?
 
-* Plugin to add supports for custom languages like Pug, Sass in [vue-native](https://vue-native.io/) component.
+* Plugin to add supports for custom languages like Pug, Stylus in [vue-native](https://vue-native.io/) component.
 
 ## How to use
 
@@ -53,7 +53,7 @@ module.exports = {
     script: [
       'ts',
       {
-        lang: 'coffee', // This must set in "lang" attribute.
+        lang: 'coffee', // This must be set in "lang" attribute.
         transform(content) {
           return CoffeeScript.compile(code);
         },
