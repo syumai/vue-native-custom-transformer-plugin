@@ -1,6 +1,6 @@
 {
   "name": "vue-native-custom-transformer-plugin",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "index.js",
   "repository": "https://github.com/syumai/vue-native-pug-plugin",
   "author": "syumai",
