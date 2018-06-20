@@ -18,7 +18,8 @@ function parseScript(script) {
     return defaultScript;
   }
 
-  const scriptContent = script.content.replace(/\/\/\n/g, '');
+  const { content, lang } = script;
+  const scriptContent = content.replace(/\/\/\n/g, '');
   const transformedContent = transformScriptContent(scriptContent, lang);
   const s = `const ${constants.SCRIPT_OPTIONS} = `;
   return transformedContent

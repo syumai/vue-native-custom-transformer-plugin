@@ -1,12 +1,19 @@
 let sass;
 
-try {
-  sass = require('node-sass');
-} catch (e) {
-  console.error('node-sass not loaded');
+let initialized = false;
+
+const { require: requireFromAppRoot } = require('app-root-path');
+
+function init() {
+  sass = requireFromAppRoot('./node_modules/node-sass');
+  initialized = true;
 }
 
 function transform(content, options) {
+  if (!initialized) {
+    init();
+  }
+
   options = Object.assign(
     {
       data: content,

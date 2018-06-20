@@ -1,12 +1,19 @@
 let pug;
 
-try {
-  pug = require('pug');
-} catch (e) {
-  console.error('pug not loaded');
+let initialized = false;
+
+const { require: requireFromAppRoot } = require('app-root-path');
+
+function init() {
+  pug = requireFromAppRoot('./node_modules/pug');
+  initialized = true;
 }
 
 function transform(content, options) {
+  if (!initialized) {
+    init();
+  }
+
   if (pug) {
     return pug.render(content, options || {});
   } else {

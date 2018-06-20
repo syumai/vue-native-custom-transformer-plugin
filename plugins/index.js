@@ -1,5 +1,5 @@
 const path = require('path');
-const appRootPath = path.dirname(require.main.filename);
+const { resolve: resolveFromAppRoot } = require('app-root-path');
 
 const registeredPlugins = {
   initialized: false,
@@ -20,11 +20,11 @@ function registerPlugin(moduleName, plugin) {
     );
     return;
   }
-  registeredPlugins[lang] = content => transform(content, options);
+  registeredPlugins[moduleName][lang] = content => transform(content, options);
 }
 
 function registerBuitinPlugin(moduleName, plugin) {
-  const { lang, options } = plugin;
+  const { lang, options = {} } = plugin;
   let pluginPath;
   try {
     pluginPath = require.resolve(`../plugins/${moduleName}/${lang}.js`);
@@ -45,10 +45,6 @@ function registerBuitinPlugin(moduleName, plugin) {
 }
 
 function registerPlugins(plugins) {
-  if (!Array.isArray(plugins)) {
-    plugins = [plugins];
-  }
-
   for (const [moduleName, modulePlugins] of Object.entries(plugins)) {
     if (!modulePlugins) {
       continue;
@@ -77,9 +73,7 @@ function loadConfig() {
   // load config automatically
   let configPath;
   try {
-    configPath = require.resolve(
-      `${appRootPath}/vue-native-custom-transformer.config.js`
-    );
+    configPath = resolveFromAppRoot('vue-native-custom-transformer.config.js');
   } catch (e) {
     if (e.code === 'MODULE_NOT_FOUND') {
       console.error(
@@ -103,7 +97,7 @@ function initializePlugins() {
     console.error('config for vue-native-custom-transformer was not found');
     return;
   }
-  registerPlugins(config.plugins);
+  registerPlugins(plugins);
 }
 
 module.exports = {
