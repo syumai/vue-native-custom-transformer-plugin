@@ -644,9 +644,9 @@ urix@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/urix/-/urix-0.1.0.tgz#da937f7a62e21fec1fd18d49b35c2935067a6c72"
 
-vue-native-scripts@^0.0.8:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/vue-native-scripts/-/vue-native-scripts-0.0.8.tgz#8d92501ff6edc943fd951bb25c8f3f6137a677e7"
+vue-native-scripts@0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/vue-native-scripts/-/vue-native-scripts-0.0.9.tgz#3911712743d8862364e8ff5e15f93c522e966a18"
   dependencies:
     babel-core "^6.25.0"
     cross-spawn "^5.1.0"
