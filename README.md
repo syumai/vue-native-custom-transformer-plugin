@@ -55,7 +55,7 @@ module.exports = {
       {
         lang: 'coffee', // This must be set in "lang" attribute.
         transform(content) {
-          return CoffeeScript.compile(code);
+          return CoffeeScript.compile(content);
         },
       },
     ],
