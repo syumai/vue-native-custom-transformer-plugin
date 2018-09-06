@@ -2,7 +2,7 @@
   "name": "vue-native-custom-transformer-plugin",
   "version": "0.2.2",
   "main": "index.js",
-  "repository": "https://github.com/syumai/vue-native-pug-plugin",
+  "repository": "https://github.com/syumai/vue-native-custom-transformer-plugin",
   "author": "syumai",
   "license": "MIT",
   "dependencies": {
