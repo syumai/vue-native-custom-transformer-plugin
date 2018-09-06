@@ -9,8 +9,8 @@
     "app-root-path": "^2.0.1",
     "css-parse": "^2.0.0",
     "semver": "^5.5.0",
-    "vue-native-scripts": "0.0.9",
-    "vue-native-template-compiler": "^0.0.8"
+    "vue-native-scripts": "^0.0.14",
+    "vue-native-template-compiler": "^0.0.12"
   },
   "devDependencies": {}
 }
