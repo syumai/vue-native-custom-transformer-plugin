@@ -6,7 +6,9 @@ const {
 const { minor: reactNativeMinorVersion } = semver(reactNativeVersionString);
 
 const upstreamTransformer = (() => {
-  if (reactNativeMinorVersion >= 56) {
+  if (reactNativeMinorVersion >= 59) {
+    return require("metro-react-native-babel-transformer");
+  } else if (reactNativeMinorVersion >= 56) {
     return require('metro/src/reactNativeTransformer');
   } else if (reactNativeMinorVersion >= 52) {
     return require('metro/src/transformer');
