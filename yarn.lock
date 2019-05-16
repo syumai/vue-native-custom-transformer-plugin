@@ -165,8 +165,8 @@ chalk@^1.1.3:
     supports-color "^2.0.0"
 
 change-case@^3.0.1:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/change-case/-/change-case-3.0.2.tgz#fd48746cce02f03f0a672577d1d3a8dc2eceb037"
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/change-case/-/change-case-3.1.0.tgz#0e611b7edc9952df2e8513b27b42de72647dd17e"
   dependencies:
     camel-case "^3.0.0"
     constant-case "^2.0.0"
@@ -331,8 +331,8 @@ hash-sum@^1.0.2:
   resolved "https://registry.yarnpkg.com/hash-sum/-/hash-sum-1.0.2.tgz#33b40777754c6432573c120cc3808bbd10d47f04"
 
 he@^1.1.0:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
 
 header-case@^1.0.0:
   version "1.0.1"
@@ -427,11 +427,7 @@ line-number@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/line-number/-/line-number-0.1.0.tgz#d6486205df145c922e028e667e5db9e300ba6453"
 
-lodash@^4.17.10:
-  version "4.17.10"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
-
-lodash@^4.17.4:
+lodash@^4.17.10, lodash@^4.17.4:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
 
@@ -694,9 +690,9 @@ urix@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/urix/-/urix-0.1.0.tgz#da937f7a62e21fec1fd18d49b35c2935067a6c72"
 
-vue-native-scripts@^0.0.15:
-  version "0.0.15"
-  resolved "https://registry.yarnpkg.com/vue-native-scripts/-/vue-native-scripts-0.0.15.tgz#6fa34fa853123541b163f2160d1d17cb6236b432"
+vue-native-scripts@^0.0.16:
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/vue-native-scripts/-/vue-native-scripts-0.0.16.tgz#70e5169fd2cdc106fe80f2b61312ada4d8b74cb1"
   dependencies:
     babel-core "^6.25.0"
     babel-traverse "^6.26.0"
@@ -708,12 +704,12 @@ vue-native-scripts@^0.0.15:
     line-number "^0.1.0"
     node-watch "^0.5.4"
     parse5 "^5.0.0"
-    vue-native-template-compiler "^0.0.12"
+    vue-native-template-compiler "^0.0.13"
     walk "^2.3.9"
 
-vue-native-template-compiler@^0.0.12:
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/vue-native-template-compiler/-/vue-native-template-compiler-0.0.12.tgz#fccac9f860796c6a213a9080a8935038c7f240bd"
+vue-native-template-compiler@^0.0.13:
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/vue-native-template-compiler/-/vue-native-template-compiler-0.0.13.tgz#717f2e932d76cb55e8e41248780e746503f8da18"
   dependencies:
     change-case "^3.0.1"
     de-indent "^1.0.2"
